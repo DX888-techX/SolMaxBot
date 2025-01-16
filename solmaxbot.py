@@ -25,10 +25,10 @@ def main():
     application.add_handler(CommandHandler("analyze", analyze))
 
     # Настройка вебхуков
-    webhook_url = "https://solmaxbot.onrender.com/"  # Твой URL
+    webhook_url = "https://solmaxbot.onrender.com/"  # Убедись, что URL правильный
     application.run_webhook(
         listen="0.0.0.0",  # Слушаем все входящие соединения
-        port=5000,         # Порт, на котором будет работать бот
+        port=int(os.getenv("PORT", 5000)),  # Используем порт из переменной окружения
         webhook_url=webhook_url  # URL для вебхуков
     )
 
